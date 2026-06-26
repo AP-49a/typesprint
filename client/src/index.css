@@ -1,0 +1,110 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Carbon Dark (Default) */
+    --color-bg: 21 21 21;        /* #151515 */
+    --color-main: 244 180 26;    /* Gold #F4B41A */
+    --color-sub: 100 116 139;    /* Muted Slate #64748B */
+    --color-text: 241 245 249;   /* Bright Slate #F1F5F9 */
+    --color-error: 239 68 68;    /* Red #EF4444 */
+    --color-correct: 16 185 129; /* Emerald Green #10B981 */
+  }
+
+  :root.theme-light {
+    /* Clean Light Mode */
+    --color-bg: 244 244 246;     /* Light Grey #F4F4F6 */
+    --color-main: 59 130 246;    /* Blue #3B82F6 */
+    --color-sub: 140 140 150;    /* Dark Muted */
+    --color-text: 24 24 27;      /* Dark Zinc #18181B */
+    --color-error: 225 29 72;    /* Rose #E11D48 */
+    --color-correct: 5 150 105;  /* Emerald #059669 */
+  }
+
+  :root.theme-cyberpunk {
+    /* Cyberpunk neon theme */
+    --color-bg: 10 10 20;        /* Deep Cyber #0A0A14 */
+    --color-main: 0 255 240;     /* Neon Cyan #00FFF0 */
+    --color-sub: 170 0 255;      /* Neon Purple */
+    --color-text: 255 0 128;     /* Neon Pink */
+    --color-error: 255 235 0;    /* Neon Yellow */
+    --color-correct: 0 255 240;  /* Cyan */
+  }
+
+  :root.theme-nord {
+    /* Nord Theme */
+    --color-bg: 46 52 64;        /* Nord Dark #2E3440 */
+    --color-main: 136 192 208;   /* Frost Cyan #88C0D0 */
+    --color-sub: 118 134 146;    /* Frost Slate */
+    --color-text: 236 239 244;   /* Snow Storm */
+    --color-error: 191 97 106;   /* Aurora Red */
+    --color-correct: 163 190 140;/* Aurora Green */
+  }
+
+  /* Font settings based on sizing in settings page */
+  .font-size-small {
+    font-size: 1.1rem;
+    line-height: 1.8rem;
+  }
+  .font-size-medium {
+    font-size: 1.5rem;
+    line-height: 2.3rem;
+  }
+  .font-size-large {
+    font-size: 1.85rem;
+    line-height: 2.75rem;
+  }
+
+  body {
+    background-color: rgb(var(--color-bg));
+    color: rgb(var(--color-text));
+    font-family: 'Outfit', sans-serif;
+  }
+
+  .typing-font {
+    font-family: 'JetBrains Mono', Consolas, monospace;
+  }
+}
+
+/* Glassmorphism utility card styling */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.theme-light .glass-panel {
+  background: rgba(0, 0, 0, 0.02);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+/* Blinking cursor animations */
+@keyframes cursor-blink {
+  0%, 100% { border-left-color: rgb(var(--color-main)); }
+  50% { border-left-color: transparent; }
+}
+
+.custom-cursor {
+  animation: cursor-blink 0.9s infinite;
+  border-left-width: 2.5px;
+  margin-left: -1px;
+}
+
+/* Custom scrollbar to avoid distracting the typist */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgb(var(--color-sub) / 0.3);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(var(--color-sub) / 0.5);
+}

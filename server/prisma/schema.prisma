@@ -1,0 +1,49 @@
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id           String        @id @default(auto()) @map("_id") @db.ObjectId
+  email        String        @unique
+  username     String        @unique
+  passwordHash String
+  displayName  String?
+  avatarUrl    String?
+  dailyStreak  Int           @default(0)
+  lastTestDate DateTime?
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+  tests        TypingTest[]
+  certificates Certificate[]
+}
+
+model TypingTest {
+  id             String   @id @default(auto()) @map("_id") @db.ObjectId
+  userId         String?  @db.ObjectId
+  user           User?    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  wpmGross       Float
+  wpmNet         Float
+  accuracy       Float
+  duration       Int      // 15, 30, 60, 120
+  mode           String   // "words", "quote", "paragraph"
+  correctChars   Int
+  incorrectChars Int
+  mistakesJson   String   // JSON string of characters and mistake count
+  createdAt      DateTime @default(now())
+}
+
+model Certificate {
+  id         String   @id @map("_id") // Custom string format: TS-YYYY-XXXXXX
+  userId     String   @db.ObjectId
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  wpmGross   Float
+  wpmNet     Float
+  accuracy   Float
+  verified   Boolean  @default(true)
+  createdAt  DateTime @default(now())
+}
