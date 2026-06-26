@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext.js';
 import { ResponsiveContainer, AreaChart, Area, XAxis, YAxis, Tooltip, CartesianGrid } from 'recharts';
 import { Award, Zap, History, Flame, TrendingUp, Clock, ShieldCheck, ArrowRight, Activity } from 'lucide-react';
+import API_URL from '../config/api';
 
 export const Dashboard: React.FC = () => {
   const { user, token } = useAuth();
@@ -16,7 +17,9 @@ export const Dashboard: React.FC = () => {
       if (!user) return;
       try {
         // Fetch stats
-        const statsRes = await fetch(`/api/tests/stats?userId=${user.id}`);
+        const statsRes = await fetch(
+  `${API_URL}/api/tests/stats?userId=${user.id}`
+);
         if (statsRes.ok) {
           const statsData = await statsRes.json();
           setStats(statsData);

@@ -12,7 +12,7 @@ export const Certificates: React.FC = () => {
   useEffect(() => {
     const fetchCerts = async () => {
       try {
-        const res = await fetch('/api/certificates', {
+        const res = await fetch(`/api/certificates`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         if (res.ok) {

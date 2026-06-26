@@ -3,6 +3,7 @@ import { useParams, Link } from 'react-router-dom';
 import { ShieldCheck, Download, Calendar, ExternalLink, RefreshCw } from 'lucide-react';
 import html2canvas from 'html2canvas';
 import { jsPDF } from 'jspdf';
+import API_URL from '../config/api';
 
 export const CertificateDetail: React.FC = () => {
   const { id } = useParams<{ id: string }>();
@@ -15,7 +16,7 @@ export const CertificateDetail: React.FC = () => {
     const fetchCertificate = async () => {
       if (!id) return;
       try {
-        const res = await fetch(`/api/certificates/verify/${id}`);
+        const res = await fetch(`${API_URL}/api/certificates/verify/${id}`);
         const data = await res.json();
         if (res.ok && data.valid) {
           setCertData(data);
