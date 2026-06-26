@@ -94,7 +94,7 @@ Practice your typing, improve your speed and accuracy, compete on global leaderb
 ## ⌨️ Typing Test
 
 <p align="center">
-<img src="screenshots\test.png" width="95%">
+<img src="screenshots/test.png" width="95%">
 </p>
 
 ---
