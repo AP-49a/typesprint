@@ -6,7 +6,7 @@
 
 <br>
 
-![React](https://img.shields.io/badge/React-18-blue?style=for-the-badge&logo=react)
+![React]([https://img.shields.io/badge/React-18-blue?style=for-the-badge&logo=react](https://www.flaticon.com/free-icon/atom_3459528?term=react&page=1&position=3&origin=search&related_id=3459528))
 ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript)
 ![Express](https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express)
 ![MongoDB](https://img.shields.io/badge/MongoDB-47A248?style=for-the-badge&logo=mongodb)
